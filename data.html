@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>fetch JSOn DATA</title>
+  </head>
+  <body>
+    <h1>JSON DATA</h1>
+    <div id="data-container"></div>
+
+    <script>
+      fetch("data.json")
+        .then((Response) => Response.json())
+        .then((data) => {
+          displayData(data);
+        })
+
+        .catch((error) => {
+          console.log("Error:", error);
+        });
+
+      function displaydata(data) {
+        const container = document.getElementById("data-container");
+
+        data.forEach((item) => {
+          const itemDiv = document.createElement("div");
+
+          itemDiv.innerHTML = `
+
+<h3> $ {item.title}</h3>
+<p> $ {item.description} </p>
+                    `;
+          container.appendChild(itemDiv);
+        });
+      }
+    </script>
+  </body>
+</html>
